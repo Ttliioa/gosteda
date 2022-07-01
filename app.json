@@ -1,7 +1,7 @@
 { 
-  "name": "Gost",
-  "description": "Deploy Gost to Heroku.",
-  "keywords": ["Gost"],
+  "name": "gosteda",
+  "description": "Deploy Gosteda to Heroku.",
+  "keywords": ["gosteda"],
   "env": {
     "METHOD": {
        "description": "Encryption method, null by default(table), the following methods are supported: aes-128-cfb, aes-192-cfb, aes-256-cfb, bf-cfb, cast5-cfb, des-cfb, rc4-md5, rc4-md5-6, chacha20, salsa20, rc4, table.",
@@ -9,10 +9,10 @@
      },
      "PASSWORD": {
        "description": "A password used to encrypt transfer.",
-       "value": "ss123456"
+       "value": "replgo123456jsdk"
      }
   },
   "stack": "container",
-  "website": "https://github.com/xiaokaixuan/gost-heroku",
-  "repository": "https://github.com/xiaokaixuan/gost-heroku"
+  "website": "https://github.com/Ttliioa/gosteda",
+  "repository": "https://github.com/Ttliioa/gosteda"
  }
