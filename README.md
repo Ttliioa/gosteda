@@ -11,21 +11,24 @@
  
 > 4.  技术文档[站点](https://docs.ginuerzh.xyz/gost/)
 
-> 5. 可通过cloudflare worker中转流量：
-
-```js
-addEventListener(
-    "fetch",event => {
-    let url=new URL(event.request.url);
-    url.hostname="xxx.herokuapp.com";
-    let request=new Request(url,event.request);
-    event. respondWith(
-      fetch(request)
-    )
-  }
-)
+> 5. 可通过cloudflare pages中转流量：
+新建 一个 _worker.js 文件，内容如下，替换 xxx.herokuapp.com为自己的应用。
+```_worker.js
+export default {
+  async fetch(request, env) {
+    let url = new URL(request.url);
+    if (url.pathname.startsWith('/')) {
+      url.hostname = 'xxx.herokuapp.com'
+      let new_request = new Request(url, request);
+      return fetch(new_request);
+    }
+    return env.ASSETS.fetch(request);
+  },
+};
 ```
+在 cloudflare 中 选择 Pages ,点击 ，建立专案  选择 直接上传 上传_worker.js文件 
 
+部署网站后。xxxxx.pages.dev  就是 pages 的代理。
 
 ### 参考 
 *https://github.com/ginuerzh/gost*
